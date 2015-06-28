@@ -34,4 +34,6 @@ class RentRecord(models.Model):
 	dress = models.ForeignKey(Dress)
 	rentDate = models.DateField('date rent')
 
+class Picture(models.Model):
+        image = models.ImageField(upload_to='pic')
 
