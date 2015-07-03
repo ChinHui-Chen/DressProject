@@ -26,6 +26,7 @@ class Dress(models.Model):
 	additional = models.IntegerField(default=0)
 	color = models.CharField(max_length=200)
 	number = models.CharField(max_length=200)
+	image = models.ImageField(upload_to='pic')
 
 	def __unicode__(self):
 		return self.number
@@ -33,7 +34,3 @@ class Dress(models.Model):
 class RentRecord(models.Model):
 	dress = models.ForeignKey(Dress)
 	rentDate = models.DateField('date rent')
-
-class Picture(models.Model):
-        image = models.ImageField(upload_to='pic')
-
