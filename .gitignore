@@ -1,3 +1,6 @@
 dress/*.pyc
 dress_pool/*.pyc
 *.pyc
+
+VENV/*
+Trash/*

@@ -64,3 +64,6 @@ class RentRecord(models.Model):
 	class Meta:
 		verbose_name = '租借記錄'
 		verbose_name_plural = '租借記錄'
+
+	def __str__(self):
+		return u'%s    %s' % (str(self.rentDate), str(self.dress))
