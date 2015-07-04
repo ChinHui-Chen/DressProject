@@ -6,7 +6,7 @@ from dress_pool.models import Dress
 from dress_pool.models import RentRecord
 
 class DressAdmin(admin.ModelAdmin):
-	list_display = ('number','skirtType','dressType')
+	list_display = ('number','skirtType','dressType',)
 	search_fields = ['vendor']
 	readonly_fields = ('image_tag',)
 	

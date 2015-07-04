@@ -35,7 +35,7 @@ class Purpose(models.Model):
 class Dress(models.Model):
 	number = models.CharField('編號 ', max_length=200)
 	rent = models.IntegerField('租金 ', default=0)
-	additional = models.IntegerField('禮服加價', default=0)
+	additional = models.IntegerField('禮服加價 ', default=0)
 	dressType = models.ForeignKey(DressType, verbose_name='禮服類型')
 	skirtType = models.ForeignKey(SkirtType, verbose_name='裙子類型')
 	purpose = models.ForeignKey(Purpose, verbose_name='用途')
@@ -43,6 +43,8 @@ class Dress(models.Model):
 	amount = models.IntegerField('總價 ', default=0)
 	color = models.CharField('顏色 ', max_length=200)
 	image = models.ImageField('禮服照片 ', upload_to='pic')
+	remark = models.CharField('備註 ', max_length=200, blank=True)
+#	members = models.ManyToManyField( SkirtType , db_table='person_group')  
 
 	def image_tag(self):
 		return u'<img src="%s" width="300px" />' % self.image.url
