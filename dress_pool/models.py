@@ -33,15 +33,15 @@ class Purpose(models.Model):
 
 
 class Dress(models.Model):
-	skirtType = models.ForeignKey(SkirtType, verbose_name='裙子類型')
+	number = models.CharField('編號 ', max_length=200)
+	rent = models.IntegerField('租金 ', default=0)
 	dressType = models.ForeignKey(DressType, verbose_name='禮服類型')
+	skirtType = models.ForeignKey(SkirtType, verbose_name='裙子類型')
 	purpose = models.ForeignKey(Purpose, verbose_name='用途')
 	vendor = models.CharField('廠商 ', max_length=200)
 	amount = models.IntegerField('總價 ', default=0)
-	rent = models.IntegerField('租金 ', default=0)
-	additional = models.IntegerField('其他 ', default=0)
 	color = models.CharField('顏色 ', max_length=200)
-	number = models.CharField('編號 ', max_length=200)
+	additional = models.IntegerField('備註 ', default=0)
 	image = models.ImageField('禮服照片 ', upload_to='pic')
 
 	def image_tag(self):
