@@ -58,8 +58,8 @@ class Dress(models.Model):
 
 
 class RentRecord(models.Model):
-	dress = models.ForeignKey(Dress)
-	rentDate = models.DateField('date rent')
+	dress = models.ForeignKey(Dress, verbose_name='禮服')
+	rentDate = models.DateField('租借時間')
 
 	class Meta:
 		verbose_name = '租借記錄'
