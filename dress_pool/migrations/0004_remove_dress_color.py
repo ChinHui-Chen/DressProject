@@ -11,10 +11,8 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.AlterField(
+        migrations.RemoveField(
             model_name='dress',
             name='color',
-            field=models.ForeignKey(verbose_name='顏色', to='dress_pool.Color'),
-            preserve_default=True,
         ),
     ]
