@@ -4,6 +4,7 @@ from dress_pool.models import DressType
 from dress_pool.models import Purpose
 from dress_pool.models import Dress
 from dress_pool.models import RentRecord
+from dress_pool.models import Color
 
 class DressAdmin(admin.ModelAdmin):
 	list_display = ('number','skirtType','dressType',)
@@ -16,5 +17,5 @@ admin.site.register(DressType)
 admin.site.register(Purpose)
 admin.site.register(Dress, DressAdmin)
 admin.site.register(RentRecord)
-
+admin.site.register(Color)
 

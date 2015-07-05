@@ -32,6 +32,17 @@ class Purpose(models.Model):
 		verbose_name_plural = '用途'
 
 
+class Color(models.Model):
+	colorName = models.CharField('顏色', max_length=200)
+
+	def __str__(self):
+		return self.colorName
+
+	class Meta:
+		verbose_name = '顏色'
+		verbose_name_plural = '顏色'
+
+
 class Dress(models.Model):
 	number = models.CharField('編號 ', max_length=200)
 	rent = models.IntegerField('租金 ', default=0)
@@ -41,7 +52,7 @@ class Dress(models.Model):
 	purpose = models.ForeignKey(Purpose, verbose_name='用途')
 	vendor = models.CharField('廠商 ', max_length=200)
 	amount = models.IntegerField('總價 ', default=0)
-	color = models.CharField('顏色 ', max_length=200)
+	color = models.ForeignKey(Color, verbose_name='顏色')
 	image = models.ImageField('禮服照片 ', upload_to='pic')
 	remark = models.CharField('備註 ', max_length=200, blank=True)
 #	members = models.ManyToManyField( SkirtType , db_table='person_group')  
