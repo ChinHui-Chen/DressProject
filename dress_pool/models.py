@@ -52,7 +52,7 @@ class Dress(models.Model):
 	purpose = models.ForeignKey(Purpose, verbose_name='用途')
 	vendor = models.CharField('廠商 ', max_length=200)
 	amount = models.IntegerField('總價 ', default=0)
-	#color = models.ForeignKey(Color, verbose_name='顏色')
+	color = models.ForeignKey(Color, verbose_name='顏色')
 	image = models.ImageField('禮服照片 ', upload_to='pic')
 	remark = models.CharField('備註 ', max_length=200, blank=True)
 #	members = models.ManyToManyField( SkirtType , db_table='person_group')  
