@@ -13,7 +13,7 @@ class ModelAInline(admin.TabularInline):
 
 class DressAdmin(admin.ModelAdmin):
 	list_display = ('number','skirtType','dressType',)
-	search_fields = ['vendor']
+	search_fields = ['number']
 	readonly_fields = ('image_tag',)
 	inlines = [ModelAInline]
 
