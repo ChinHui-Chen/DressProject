@@ -50,7 +50,7 @@ class Dress(models.Model):
 	dressType = models.ForeignKey(DressType, verbose_name='禮服類型')
 	skirtType = models.ForeignKey(SkirtType, verbose_name='裙子類型')
 	purpose = models.ForeignKey(Purpose, verbose_name='用途')
-	vendor = models.CharField('廠商 ', max_length=200)
+	vendor = models.CharField('廠商 ', max_length=200, blank=True)
 	amount = models.IntegerField('總價 ', default=0)
 	color = models.ForeignKey(Color, verbose_name='顏色')
 	remark = models.CharField('備註 ', max_length=200, blank=True)
