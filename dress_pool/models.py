@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.exceptions import ValidationError
 
 # Create your models here.
 class SkirtType(models.Model):
@@ -54,8 +55,16 @@ class Dress(models.Model):
 	amount = models.IntegerField('總價 ', default=0)
 	color = models.ForeignKey(Color, verbose_name='顏色')
 	remark = models.CharField('備註 ', max_length=200, blank=True)
-	image = models.ImageField('禮服照片 ', upload_to='pic')
 	#	members = models.ManyToManyField( SkirtType , db_table='person_group')  
+
+	def validate_image(fieldfile_obj):
+		filesize = fieldfile_obj.file.size
+		megabyte_limit = 5.0
+		if filesize > megabyte_limit*1024*1024:
+			raise ValidationError("圖片超過 %sMB" % str(megabyte_limit))
+
+	image = models.ImageField('禮服照片 ', upload_to='pic', validators=[validate_image])
+
 
 	def image_tag(self):
 		return u'<img src="%s" width="300px" />' % self.image.url
