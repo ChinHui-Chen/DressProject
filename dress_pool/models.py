@@ -43,7 +43,6 @@ class Color(models.Model):
 		verbose_name = '顏色'
 		verbose_name_plural = '顏色'
 
-
 class Dress(models.Model):
 	number = models.CharField('編號 ', max_length=200)
 	rent = models.IntegerField('租金 ', default=0)
@@ -55,21 +54,25 @@ class Dress(models.Model):
 	amount = models.IntegerField('總價 ', default=0)
 	color = models.ForeignKey(Color, verbose_name='顏色')
 	remark = models.CharField('備註 ', max_length=200, blank=True)
-	#	members = models.ManyToManyField( SkirtType , db_table='person_group')  
-
+	
 	def validate_image(fieldfile_obj):
 		filesize = fieldfile_obj.file.size
 		megabyte_limit = 5.0
 		if filesize > megabyte_limit*1024*1024:
 			raise ValidationError("圖片超過 %sMB" % str(megabyte_limit))
 
-	image = models.ImageField('禮服照片 ', upload_to='pic', validators=[validate_image])
-
+	image = models.ImageField('上傳 ', upload_to='pic', validators=[validate_image])
 
 	def image_tag(self):
 		return u'<img src="%s" width="300px" />' % self.image.url
 	image_tag.short_description = "預覽 "
 	image_tag.allow_tags = True
+
+	def rent_total(self):
+		return RentRecord.objects.filter(dress = self).count()
+
+	rent_total.short_description = "租借次數 "
+	rent_total.allow_tags = True
 
 	def __str__(self):
 		return self.number

@@ -12,11 +12,13 @@ class ModelAInline(admin.TabularInline):
 	ordering = ("-rentDate",)
 
 class DressAdmin(admin.ModelAdmin):
-	list_display = ('number','skirtType','dressType',)
+	list_display = ('number','dressType','rent_total')
 	search_fields = ['number']
-	readonly_fields = ('image_tag',)
+	readonly_fields = ('image_tag','rent_total')
 	inlines = [ModelAInline]
 
+	fields = ('image_tag', 'image', 'number', 'rent', 'additional', 'dressType', 'skirtType', 'purpose', 'vendor', 'color', 'amount', 'remark', 'rent_total')
+	
 # Register your models here.
 admin.site.register(SkirtType)
 admin.site.register(DressType)
