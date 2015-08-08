@@ -1,0 +1,8 @@
+
+
+== Q&A ==
+
+Q1. sqlite3.OperationalError: unable to open database file
+A. 
+Django NewbieMistakes (https://code.djangoproject.com/wiki/NewbieMistakes#DjangosaysUnabletoOpenDatabaseFilewhenusingSQLite3)
+
